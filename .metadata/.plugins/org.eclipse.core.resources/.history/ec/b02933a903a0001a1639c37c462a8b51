@@ -1,0 +1,13 @@
+package webapp.repository;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+
+import webapp.entity.LoggerClass;
+
+public interface LoggerClassRepository extends CrudRepository<LoggerClass,Integer>{
+	
+	public List<LoggerClass> fingByentityName(String entityName);
+
+}

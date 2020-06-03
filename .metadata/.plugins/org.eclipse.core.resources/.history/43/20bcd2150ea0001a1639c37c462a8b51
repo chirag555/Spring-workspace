@@ -1,0 +1,66 @@
+package webapp.entity;
+
+import java.util.Date;
+
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import webapp.config.Auditable;
+
+
+@Getter(AccessLevel.PUBLIC)
+@Setter(AccessLevel.PUBLIC)
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class Post extends Auditable<String> {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
+	int id;
+	@Column
+	String title;
+	@Column
+	String body;
+	@Column
+	String description;
+	
+	/* @PrePersist
+	public void preInsert() {
+		this.description=title+" "+body;
+		this.lastModifiedDate=new Date();
+		this.createdDate=new Date();
+		//System.out.println(lastModifiedDate+ "  "+createdDate);
+		//System.out.println(toString());
+	}
+	 /*
+	 *
+	@PreUpdate
+	public void preUpdate() {
+		
+		//this.lastModifiedDate=new Date();
+		System.out.println(toString());
+	}
+	
+	@PreRemove
+	public void onPreRemove() {
+		System.out.println("deleted Record");
+	}
+*/
+
+
+	
+	
+}

@@ -1,0 +1,15 @@
+package webapp.config;
+
+import java.util.Optional;
+
+import org.springframework.data.domain.AuditorAware;
+
+public class AuditorAwareImpl implements AuditorAware<T> {
+
+	@Override
+	public Optional<T> getCurrentAuditor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

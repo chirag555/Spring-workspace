@@ -1,0 +1,5 @@
+package webapp.config;
+
+public class PersistenceConfig {
+
+}

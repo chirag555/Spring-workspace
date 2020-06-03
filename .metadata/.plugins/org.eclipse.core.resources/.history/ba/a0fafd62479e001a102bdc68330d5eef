@@ -1,0 +1,118 @@
+package webapp.entity;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreRemove;
+import javax.persistence.PreUpdate;
+import javax.persistence.Table;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import webapp.config.Auditable;
+
+@Getter(AccessLevel.PUBLIC)
+@Setter(AccessLevel.PUBLIC)
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "posts")
+
+public class Post extends Auditable<String> {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	int postId;
+	@Column(name = "title")
+	String title;
+	@Column(name = "body")
+	String body;
+	@Column(name = "description")
+	String description;
+	public void add() {
+		//this.createdDate
+	}
+	
+	@PrePersist
+	public void preInsert() {
+		this.description=title+" "+body;
+		//this.lastModifiedDate=new Date();
+		//this.createdDate=new Date();
+		//System.out.println(lastModifiedDate+ "  "+createdDate);
+		System.out.println(toString());
+	}
+	
+	@PreUpdate
+	public void preUpdate() {
+		
+		this.lastModifiedDate=new Date();
+		System.out.println(toString());
+	}
+	@PreRemove
+	public void onPreRemove() {
+		System.out.println("deleted Record");
+	}
+
+
+@Override
+	public String toString() {
+		return "Post [postId=" + postId + ", title=" + title + ", body=" + body + ", description=" + description
+				+ ", createdDate=" + createdDate + ", lastModifiedDate=" + lastModifiedDate + "]";
+	}
+
+
+	//from here
+	public int getPostId() {
+		return postId;
+	}
+
+	public void setPostId(int postId) {
+		this.postId = postId;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getBody() {
+		return body;
+	}
+
+	public void setBody(String body) {
+		this.body = body;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public Date getLastModifiedDate() {
+		return this.lastModifiedDate;
+	}
+	public Date getCreatedDate() {
+		return this.createdDate;
+	}
+
+
+	
+	
+	
+	
+	
+	
+}

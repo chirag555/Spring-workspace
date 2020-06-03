@@ -1,0 +1,71 @@
+package webapp.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import webapp.entity.Logger;
+import webapp.entity.Post;
+import webapp.repository.postsRepository;
+
+@Service
+public class PostsService {
+
+	@Autowired
+	private postsRepository repo;
+	RestTemplate restTemplate = new RestTemplate();
+	Post tempPost = new Post();
+	String url = "http://localhost:8090/loggers/";
+	Logger tempLogger = new Logger();
+	ObjectMapper mapper = new ObjectMapper();
+
+	HttpHeaders httpHeaders = restTemplate.headForHeaders(url);
+	HttpEntity<Post> request = new HttpEntity<>(new Post());
+
+	public List<Post> getPosts() {
+		List<Post> posts = new ArrayList<>();
+		for (Post post : repo.findAll()) {
+			posts.add(post);
+		}
+		return posts;
+	}
+
+	public Post getPosts(int id) {
+		return repo.findById(id).get();
+
+	}
+
+	public void addPost(Post post) throws JsonProcessingException {
+		// String uri="http://localhost:8080/loggers/";
+		
+
+		String jsonString = mapper.writeValueAsString(post);
+		tempLogger.setAfterSnapshot(jsonString);
+		tempLogger.setEntityName("Application");
+		tempLogger.setUserId("chirag");
+		tempLogger.toString();
+		restTemplate.postForObject(url,tempLogger,Logger.class);
+		repo.save(post);
+
+	}
+
+	public void updatePost(Post post) {
+		tempPost = repo.findById(post.getId()).get();
+		post.setCreatedDate(tempPost.getCreatedDate());
+		post.setDescription(tempPost.getDescription());
+		repo.save(post);
+	}
+
+	public void deletePost(int id) {
+		repo.deleteById(id);
+	}
+
+}

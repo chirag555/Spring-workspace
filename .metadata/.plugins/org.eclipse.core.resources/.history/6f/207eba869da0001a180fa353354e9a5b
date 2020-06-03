@@ -1,0 +1,18 @@
+package webapp.repository;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+
+import webapp.entity.Logger;
+
+public interface LoggerClassRepository extends CrudRepository<Logger,Integer>{
+	
+	public List<Logger> findByentityName(String entityName);
+	
+	@Query("SELECT logger.id FROM blog.logger logger WHERE logger.createdDate >= :startDate AND createdDate <= :endDate")
+	 List<Logger> findByStartDateAndEndDateParams(@Param("startDate") Date startDate,@Param("endDate") Date endDate);
+}

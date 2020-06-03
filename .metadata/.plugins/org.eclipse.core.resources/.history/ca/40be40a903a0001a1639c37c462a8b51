@@ -1,0 +1,31 @@
+package webapp.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import webapp.config.Auditable;
+
+
+@Getter(AccessLevel.PUBLIC)
+@Setter(AccessLevel.PUBLIC)
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class LoggerClass extends Auditable<String> {
+	@Id
+	@Column
+	int id;
+	@Column
+	String entityName;
+	@Column
+	String beforeSnapshot;
+	@Column
+	String afterSnapshot;
+	@Column
+	String userId;	
+}

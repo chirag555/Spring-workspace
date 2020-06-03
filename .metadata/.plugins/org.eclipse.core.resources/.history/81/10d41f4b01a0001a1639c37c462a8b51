@@ -1,0 +1,5 @@
+package webapp.repository;
+
+public class LoggerClassRepository {
+
+}

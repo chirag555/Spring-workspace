@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;api.showroom.resources.getBrands.java&apos; to &apos;showroom.java&apos;&#x0D;&#x0A;- Original project: &apos;restApp&apos;&#x0D;&#x0A;- Original element: &apos;api.showroom.resources.getBrands.java&apos;&#x0D;&#x0A;- Renamed element: &apos;api.showroom.resources.showroom.java&apos;" description="Rename compilation unit &apos;getBrands.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;api.showroom.resources{getBrands.java" name="showroom.java" references="false" stamp="1588077034610" version="1.0"/>
+</session>

@@ -1,0 +1,9 @@
+package webapp.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+import webapp.entity.LoggerClass;
+
+public interface LoggerClassRepository extends CrudRepository<LoggerClass,Integer>{
+
+}
