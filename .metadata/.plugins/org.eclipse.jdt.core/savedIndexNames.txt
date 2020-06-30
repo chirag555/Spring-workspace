@@ -58,7 +58,6 @@ INDEX VERSION 1.131+C:\Users\Chirag\Spring-workspace\.metadata\.plugins\org.ecli
 2058304629.index
 1700477869.index
 1943624333.index
-3502429930.index
 3593398233.index
 3784101099.index
 2950014344.index

@@ -45,6 +45,7 @@ public class LoggerController {
 		return loggerService.getLoggerByEntityName(entityName);
 	}
 
+	//to get the details logs between dates but with bydate as endpoint
 	@GetMapping("/bydate")
 	public List<Logger> getLoggerByDate(@RequestParam(value = "startDate") String startDate,
 			@RequestParam(value = "endDate") String endDate) {
