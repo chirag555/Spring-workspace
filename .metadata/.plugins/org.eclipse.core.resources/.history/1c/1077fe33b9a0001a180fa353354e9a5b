@@ -1,5 +1,0 @@
-package webapp.services;
-
-public class LoggerService {
-
-}

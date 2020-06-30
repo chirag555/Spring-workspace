@@ -81,12 +81,15 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="PdfToHtml"/>
 			<item value="springBoot"/>
 		</list>
 		<list key="name">
+			<item value="PdfToHtml"/>
 			<item value="SpringBootStarter"/>
 		</list>
 		<list key="artifactId">
+			<item value="PdfToHtml"/>
 			<item value="starterProject"/>
 		</list>
 		<list key="projectNameTemplate">

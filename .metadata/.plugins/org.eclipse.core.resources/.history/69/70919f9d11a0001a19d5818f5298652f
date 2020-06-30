@@ -1,7 +1,0 @@
-package webapp.config;
-
-import org.springframework.data.domain.AuditorAware;
-
-public class AuditorAwareImpl implements AuditorAware<T> {
-
-}
