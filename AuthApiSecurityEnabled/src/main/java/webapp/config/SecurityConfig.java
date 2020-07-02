@@ -24,14 +24,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 	LoginService loginService;
 	
 	@Bean
-	public AuthenticationProvider authProvider() {
-		
+	public AuthenticationProvider authProvider() {		
 		DaoAuthenticationProvider provider=new DaoAuthenticationProvider();
 		provider.setUserDetailsService(loginService);
-		provider.setPasswordEncoder(new BCryptPasswordEncoder());
+		//provider.setPasswordEncoder(new BCryptPasswordEncoder());
+		provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
 		return provider;
 	}
-
+/*
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {		
 		http
@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 		return null;
 		
 	}
-	
+	*/
 	
 	
 	

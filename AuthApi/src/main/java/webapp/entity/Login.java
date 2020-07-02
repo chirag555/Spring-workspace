@@ -34,17 +34,13 @@ public class Login extends Auditable<String> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
-	int id;
-	
+	int id;	
 	@Column
-	String 	username;
-	
+	String 	username;	
 	@Column
-	String password;
-	
+	String password;	
 	@Column
-	int lockedStatus;
-	
+	int lockedStatus;	
 	@Column
 	@Temporal(TemporalType.TIMESTAMP)
 	protected Date lockedDate;
