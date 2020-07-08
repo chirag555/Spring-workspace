@@ -13,6 +13,6 @@ public interface LoggerClassRepository extends CrudRepository<Logger,Integer>{
 	
 	@Query(value = "from Logger where createdDate BETWEEN :startDate AND :endDate")
 	/// List<Logger> findAllBycreatedDate(@PathParam("startDate") Date startDate,@PathParam("endDate") Date endDate);
-	 List<Logger> findAllBycreatedDate(Date startDate, Date endDate);
+	List<Logger> findAllBycreatedDate(Date startDate, Date endDate);
 	                    
 }

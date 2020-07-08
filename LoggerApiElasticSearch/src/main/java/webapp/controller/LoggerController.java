@@ -23,10 +23,11 @@ public class LoggerController {
 	@Autowired
 	private LoggerService loggerService;
 
-	@GetMapping
+	@GetMapping("/")
 	public List<Logger> getLogger( @RequestParam(value ="startDate", required = false) String startDate,
 			@RequestParam(value ="endDate", required = false) String endDate) {
 		return startDate==null ? loggerService.getLogger():loggerService.getLoggerByDate(startDate, endDate);
+		
 	}
 
 	@PostMapping("/")
@@ -39,6 +40,8 @@ public class LoggerController {
 	public Logger getLogger(@PathVariable int id) {
 		return loggerService.getLogger(id);
 	}
+	
+	
 
 	@GetMapping("/entity/{entityName}")
 	public List<Logger> getLogger(@PathVariable String entityName) {
@@ -46,6 +49,7 @@ public class LoggerController {
 	}
 
 	//to get the details logs between dates but with bydate as endpoint
+	
 	@GetMapping("/bydate")
 	public List<Logger> getLoggerByDate(@RequestParam(value = "startDate") String startDate,
 			@RequestParam(value = "endDate") String endDate) {

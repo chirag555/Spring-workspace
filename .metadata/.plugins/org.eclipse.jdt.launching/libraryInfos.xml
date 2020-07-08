@@ -58,4 +58,24 @@
             <entry path="F:\JDKandTools\jdk8\jre\lib\endorsed"/>
         </endorsedDirs>
     </libraryInfo>
+    <libraryInfo home="F:\JDKandTools\jdk8\extra" version="1.8.0_141">
+        <bootpath>
+            <entry path="F:\JDKandTools\jdk8\extra\jre\lib\resources.jar"/>
+            <entry path="F:\JDKandTools\jdk8\extra\jre\lib\rt.jar"/>
+            <entry path="F:\JDKandTools\jdk8\extra\jre\lib\sunrsasign.jar"/>
+            <entry path="F:\JDKandTools\jdk8\extra\jre\lib\jsse.jar"/>
+            <entry path="F:\JDKandTools\jdk8\extra\jre\lib\jce.jar"/>
+            <entry path="F:\JDKandTools\jdk8\extra\jre\lib\charsets.jar"/>
+            <entry path="F:\JDKandTools\jdk8\extra\jre\lib\jfr.jar"/>
+            <entry path="F:\JDKandTools\jdk8\extra\jre\classes"/>
+        </bootpath>
+        <extensionDirs>
+            <entry path="F:\JDKandTools\jdk8\extra\jre\lib\ext"/>
+            <entry path="C:\Windows\Sun\Java\lib\ext"/>
+        </extensionDirs>
+        <endorsedDirs>
+            <entry path="F:\JDKandTools\jdk8\extra\jre\lib\endorsed"/>
+        </endorsedDirs>
+    </libraryInfo>
+    <libraryInfo home="F:\JDKandTools\jdk8\bin" version="14.0.1"/>
 </libraryInfos>

@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.PostPersist;
 import javax.persistence.PrePersist;
 
+import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.AccessLevel;
@@ -23,6 +24,7 @@ import webapp.config.Auditable;
 @NoArgsConstructor
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
+@Document(indexName = "logger",shards = 2)
 @Entity
 public class Logger extends Auditable<String> {
 	@Id
