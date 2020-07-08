@@ -11,7 +11,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@Document(indexName = "elasticsearch",shards = 2)
+@Document(indexName = "loggercustomer",shards = 2)
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
