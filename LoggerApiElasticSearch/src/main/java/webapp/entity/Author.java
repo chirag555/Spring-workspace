@@ -1,10 +1,12 @@
 package webapp.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
+
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
+//import javax.persistence.Id;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 
@@ -19,29 +21,16 @@ import webapp.config.Auditable;
 @Setter(AccessLevel.PUBLIC)
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Document(indexName = "author",shards = 2)
+
+
 public class Author extends Auditable<String>{
+
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
 	private int id;
 
-	@Column
 	private String name;
 
-	
-	/*
-	 * @PrePersist public void onPrePersist() { setOperation("Insert");
-	 * setTimeStamp((new Date().getTime())+"");
-	 * 
-	 * }
-	 * 
-	 * @PreUpdate public void onPreUpdate() { setOperation("Update");
-	 * setTimeStamp((new Date().getTime())+""); }
-	 * 
-	 * @PreRemove public void onPreRemove() { setOperation("Remove");
-	 * setTimeStamp((new Date().getTime())+""); }
-	 */
+
 
 }

@@ -1,17 +1,9 @@
 package webapp.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.PostPersist;
-import javax.persistence.PrePersist;
 
+
+import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,29 +15,20 @@ import webapp.config.Auditable;
 @Setter(AccessLevel.PUBLIC)
 @NoArgsConstructor
 @AllArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
-@Document(indexName = "logger",shards = 2)
-@Entity
+
+@Document(indexName = "logger")
+
 public class Logger extends Auditable<String> {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	
 	int id;
-	@Column
+	
 	String entityName;
-	@Column
+
 	String beforeSnapshot;
-	@Column
+	
 	String afterSnapshot;
-	@Column
-	String userId;	
-	@PrePersist
-	public void setPrePersist() {
-		
-	}
-	@PostPersist
-	public void setPostPersist() {
-		
-	}
+
+	String userId;		
 	
 }

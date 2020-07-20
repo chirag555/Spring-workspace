@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import webapp.entity.Logger;
 import webapp.services.LoggerService;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/loggers")
 public class LoggerController {
@@ -26,8 +27,7 @@ public class LoggerController {
 	@GetMapping("/")
 	public List<Logger> getLogger( @RequestParam(value ="startDate", required = false) String startDate,
 			@RequestParam(value ="endDate", required = false) String endDate) {
-		return startDate==null ? loggerService.getLogger():loggerService.getLoggerByDate(startDate, endDate);
-		
+		return startDate==null ? loggerService.getLogger():loggerService.getLoggerByDate(startDate, endDate);		
 	}
 
 	@PostMapping("/")

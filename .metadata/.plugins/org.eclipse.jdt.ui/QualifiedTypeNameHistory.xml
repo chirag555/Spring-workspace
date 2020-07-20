@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="webapp.services.LoginService"/>
     <fullyQualifiedTypeName name="org.apache.pdfbox.pdmodel.PDDocument"/>
     <fullyQualifiedTypeName name="org.fit.pdfdom.PDFDomTree"/>
     <fullyQualifiedTypeName name="org.w3c.dom.Document"/>
@@ -46,7 +45,6 @@
     <fullyQualifiedTypeName name="org.springframework.data.elasticsearch.config.AbstractElasticsearchConfiguration"/>
     <fullyQualifiedTypeName name="org.springframework.data.elasticsearch.client.ClientConfiguration"/>
     <fullyQualifiedTypeName name="org.springframework.data.elasticsearch.client.RestClients"/>
-    <fullyQualifiedTypeName name="org.springframework.data.annotation.Id"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="org.springframework.data.elasticsearch.repository.ElasticsearchRepository"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="org.springframework.data.elasticsearch.core.ElasticsearchOperations"/>
     <fullyQualifiedTypeName name="org.springframework.data.elasticsearch.core.ElasticsearchTemplate"/>
     <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="org.springframework.data.annotation.Id"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
 </qualifiedTypeNameHistroy>

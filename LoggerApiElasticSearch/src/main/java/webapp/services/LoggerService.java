@@ -46,7 +46,6 @@ public class LoggerService {
 			e.printStackTrace();
 		}
 		return loggers;
-
 	}
 
 	public List<Logger> getLoggerByEntityName(String entityName) {

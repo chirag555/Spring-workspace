@@ -1,17 +1,18 @@
 package webapp.entity;
+//
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.EntityListeners;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
+//import javax.persistence.Id;
+//import javax.persistence.PrePersist;
+//import javax.persistence.PreRemove;
+//import javax.persistence.PreUpdate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.PreRemove;
-import javax.persistence.PreUpdate;
-
+import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+//import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -25,37 +26,19 @@ import webapp.config.Auditable;
 @Setter(AccessLevel.PUBLIC)
 @NoArgsConstructor
 @AllArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
-@Entity
-@Document(indexName = "post",shards = 2)
+
 public class Post extends Auditable<String> {
 	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
 	int id;
-	@Column
+	
 	String title;
-	@Column
+
 	String body;
-	@Column
+
 	String description;
 	
-	@PrePersist
-	public void preInsert() {
-		this.description=title+ "  "+body;
-	}
-	 
-	@PreUpdate
-	public void preUpdate() {		
-		
-	}
-	
-	@PreRemove
-	public void onPreRemove() {
-		
-	}
-
 
 
 	

@@ -28,7 +28,13 @@ public class LoggerController {
 			@RequestParam(value ="endDate", required = false) String endDate) {
 		return startDate==null ? loggerService.getLogger():loggerService.getLoggerByDate(startDate, endDate);
 	}
-
+	
+	@GetMapping("migratedata")
+	public String migrateData(){
+		loggerService.migrateData();
+		return "success";
+	}
+	
 	@PostMapping("/")
 	public ResponseEntity<Logger> addLogger(@RequestBody Logger logger) {
 		loggerService.addLogger(logger);
