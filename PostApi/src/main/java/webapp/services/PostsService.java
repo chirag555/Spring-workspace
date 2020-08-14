@@ -23,7 +23,7 @@ public class PostsService {
 	private postsRepository postRepository;
 	RestTemplate restTemplate = new RestTemplate();
 	Post tempPost = new Post();
-	String url = "http://localhost:9050/loggers/";
+	String url = "http://localhost:9050/logs/";
 	Logger tempLogger = new Logger();
 	ObjectMapper mapper = new ObjectMapper();
 	Date date = new Date();
@@ -51,11 +51,15 @@ public class PostsService {
 		tempLogger.setAfterSnapshot(jsonStringPost);
 		tempLogger.setBeforeSnapshot(jsonStringPost);
 		// hard-coded require some code to get actual users
-		tempLogger.setEntityName("Insert");
+		tempLogger.setEntityName("Division");
+		tempLogger.setAction("insert");
 		tempLogger.setUserId(post.getId() + "");
 		tempLogger.setId(post.getId() + 100);
 		tempLogger.setCreatedDate(post.getCreatedDate());
-		
+		tempLogger.setFirstName("John");
+		tempLogger.setLastName("wick");
+		tempLogger.setUserName("john_wick72");
+
 		tempLogger = restTemplate.postForObject(url, tempLogger, Logger.class);
 		jsonStringLogger = mapper.writeValueAsString(tempLogger);
 		return "Post Object -> " + jsonStringPost + "  Logger Object -> " + jsonStringLogger;
@@ -76,7 +80,19 @@ public class PostsService {
 		 * tempLogger.setEntityName("UpdatePost"); tempLogger.setUserId(""+
 		 * post.getId());
 		 */
-		tempLogger = new Logger(0, "Update", beforeSnapshot, afterSnapshot, "" + post.getId());
+			
+//		tempLogger = new Logger(0, "Audit", beforeSnapshot, afterSnapshot, "" + post.getId(),"update");
+		tempLogger.setId(0);
+		tempLogger.setEntityName("Audit");
+		tempLogger.setCreatedDate(post.getLastModifiedDate());
+		tempLogger.setBeforeSnapshot(beforeSnapshot);
+		tempLogger.setAfterSnapshot(afterSnapshot);
+		tempLogger.setUserId(""+post.getId());
+		tempLogger.setAction("update");
+		tempLogger.setFirstName("John");
+		tempLogger.setLastName("wick");
+		tempLogger.setUserName("john_wick72");
+
 		tempLogger = restTemplate.postForObject(url, tempLogger, Logger.class);
 		jsonStringLogger = mapper.writeValueAsString(tempLogger);
 		return "Post Object -> " + beforeSnapshot + "Logger Object -> " + jsonStringLogger;
@@ -89,8 +105,13 @@ public class PostsService {
 		postRepository.deleteById(id);
 		tempLogger.setBeforeSnapshot(beforeSnapshot);
 		tempLogger.setAfterSnapshot("Delete Request Invoked");
-		tempLogger.setEntityName("delete");
+		tempLogger.setEntityName("info");
+		tempLogger.setAction("delete");
 		tempLogger.setUserId("" + id);
+		tempLogger.setFirstName("John");
+		tempLogger.setLastName("wick");
+		tempLogger.setUserName("john_wick72");
+
 		tempLogger = restTemplate.postForObject(url, tempLogger, Logger.class);
 		jsonStringLogger = mapper.writeValueAsString(tempLogger);
 		return "Post Object -> " + beforeSnapshot + " Logger Object -> " + jsonStringLogger;
@@ -114,9 +135,29 @@ public class PostsService {
 		for (Post post : postRepository.findAll()) {
 			posts.add(post);
 			tempLogger = restTemplate.postForObject(url, post, Logger.class);
-
 		}
 
+	}
+
+	public String addMultiplePost(List<Post> post) throws JsonProcessingException {
+		for (Post tempPost : post) {			
+		postRepository.save(tempPost);
+		jsonStringPost = mapper.writeValueAsString(tempPost);
+		tempLogger.setAfterSnapshot(jsonStringPost);
+		tempLogger.setBeforeSnapshot(jsonStringPost);
+		// hard-coded -> requires some code to get actual users
+		tempLogger.setEntityName("Session");
+		tempLogger.setAction("Insert");
+		tempLogger.setUserId(tempPost.getId() + "");
+		tempLogger.setId(tempPost.getId() + 100);
+		tempLogger.setFirstName("John");
+		tempLogger.setLastName("wick");
+		tempLogger.setUserName("john_wick72");
+		tempLogger.setCreatedDate(tempPost.getCreatedDate());		
+		tempLogger = restTemplate.postForObject(url, tempLogger, Logger.class);
+		jsonStringLogger = mapper.writeValueAsString(tempLogger);
+		}
+		return "success";
 	}
 
 }

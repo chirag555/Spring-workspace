@@ -20,9 +20,9 @@ public class Auditable<U> {
 //	@Temporal(TemporalType.TIMESTAMP)
 	protected Date createdDate;
 
-	@LastModifiedDate
-//	@Column
-//	@Temporal(TemporalType.TIMESTAMP)
-	protected Date lastModifiedDate;	
+//	@LastModifiedDate
+////	@Column
+////	@Temporal(TemporalType.TIMESTAMP)
+//	protected Date lastModifiedDate;	
 	
 }
